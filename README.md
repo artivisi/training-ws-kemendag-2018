@@ -8,3 +8,6 @@ Kebutuhan Software:
 
 Cara setup bisa dibaca [di artikel ini](https://software.endy.muhardin.com/java/persiapan-coding-java/)
 
+## Materi Training ##
+
+* [Intro Web Service](catatan/konsep-webservice.md)
