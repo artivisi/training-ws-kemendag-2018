@@ -260,3 +260,13 @@ Beri nama yang sesuai, misalnya `KonfigurasiSoap`
 [![Nama file konfigurasi](img/12-nama-class-konfigurasi-soap.png)](img/12-nama-class-konfigurasi-soap.png)
 
 Isinya bisa [dilihat di sini](../aplikasi-siup/src/main/java/id/go/kemendag/siup/aplikasisiup/konfigurasi/KonfigurasiSoap.java)
+
+## Menjalankan Aplikasi ##
+
+Aplikasi bisa dijalankan dengan klik Run pada main class, yaitu `AplikasiSiupApplication`
+
+[![Run App](img/13-run-app.png)](img/13-run-app.png)
+
+Setelah jalan, kita bisa browse ke url `/ws/siup.wsdl` untuk melihat WSDL aplikasi kita.
+
+[![WSDL](img/14-wsdl.png)](img/14-wsdl.png)
