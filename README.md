@@ -11,3 +11,4 @@ Cara setup bisa dibaca [di artikel ini](https://software.endy.muhardin.com/java/
 ## Materi Training ##
 
 * [Intro Web Service](catatan/konsep-webservice.md)
+* [Membuat Web Service SOAP dengan Spring](catatan/soap-dengan-spring.md)
