@@ -241,3 +241,22 @@ Copy paste `XSD` yang sudah disesuaikan pada langkah sebelumnya
 
 [![Isi file XSD](img/08-isi-file-xsd.png)](img/08-isi-file-xsd.png)
 
+## Membuat Konfigurasi Spring untuk Aplikasi SOAP ##
+
+Buat package baru di dalam `id.go.kemendag.siup.aplikasisiup`
+
+[![Package konfigurasi](img/09-buat-package-konfigurasi.png)](img/09-buat-package-konfigurasi.png)
+
+Beri nama yang sesuai
+
+[![Nama package konfigurasi](img/10-nama-package-konfigurasi.png)](img/10-nama-package-konfigurasi.png)
+
+Buat class Java di dalam package yang baru dibuat tadi
+
+[![Buat class konfigurasi](img/11-buat-class-konfigurasi-soap.png)](img/11-buat-class-konfigurasi-soap.png)
+
+Beri nama yang sesuai, misalnya `KonfigurasiSoap`
+
+[![Nama file konfigurasi](img/12-nama-class-konfigurasi-soap.png)](img/12-nama-class-konfigurasi-soap.png)
+
+Isinya bisa [dilihat di sini](../aplikasi-siup/src/main/java/id/go/kemendag/siup/aplikasisiup/konfigurasi/KonfigurasiSoap.java)
