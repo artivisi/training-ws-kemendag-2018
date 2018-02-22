@@ -187,3 +187,57 @@ Dan berikut yang sudah diperbaiki dan digabungkan
   </xs:element>
 </xs:schema>
 ```
+
+## Dependensi Library SOAP dengan Spring ##
+
+Tambahkan dependensi berikut di `pom.xml`
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web-services</artifactId>
+</dependency>
+<dependency>
+    <groupId>wsdl4j</groupId>
+    <artifactId>wsdl4j</artifactId>
+</dependency>
+```
+
+Kemudian, pasang plugin untuk membuat class Java sesuai XSD
+
+```xml
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>jaxb2-maven-plugin</artifactId>
+    <version>1.6</version>
+    <executions>
+        <execution>
+            <id>xjc</id>
+            <goals>
+                <goal>xjc</goal>
+            </goals>
+        </execution>
+    </executions>
+    
+    <configuration>
+        <schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>
+    </configuration>
+</plugin>
+```
+
+## Memasang file XSD ke project ##
+
+Klik kanan `Other Sources` di Netbeans
+
+[![New File](img/06-create-empty-file.png)](img/06-create-empty-file.png)
+
+Kalau pilihan `Empty File` belum ada, pilih `Other...` dulu lalu cari di sana.
+
+Berikan nama file `siup.xsd`
+
+[![Nama File](img/07-nama-file-xsd.png)](img/07-nama-file-xsd.png)
+
+Copy paste `XSD` yang sudah disesuaikan pada langkah sebelumnya
+
+[![Isi file XSD](img/08-isi-file-xsd.png)](img/08-isi-file-xsd.png)
+
