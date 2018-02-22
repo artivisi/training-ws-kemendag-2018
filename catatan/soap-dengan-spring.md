@@ -272,3 +272,115 @@ Aplikasi bisa dijalankan dengan klik Run pada main class, yaitu `AplikasiSiupApp
 Setelah jalan, kita bisa browse ke url `/ws/siup.wsdl` untuk melihat WSDL aplikasi kita.
 
 [![WSDL](img/14-wsdl.png)](img/14-wsdl.png)
+
+## Implementasi Endpoint ##
+
+Endpoint adalah class method yang akan menghandle SOAP Request. Endpoint di Spring WS memasangkan antara method yang akan dijalankan dengan `Root Element` XML yang ada dalam `SOAP Body`. 
+
+Sebagai ilustrasi, misalnya SOAP Request kita seperti ini
+
+```xml
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:siup="http://kemendag.go.id/webservices/siup">
+  <soapenv:Header/>
+  <soapenv:Body>
+
+    <siup:daftarKelurahanRequest>
+      <siup:pencarian>
+        <siup:nama>Cili</siup:nama>
+      </siup:pencarian>
+    </siup:daftarKelurahanRequest>
+  </soapenv:Body>
+</soapenv:Envelope>
+```
+
+Maka endpoint yang akan menangani request tersebut seperti ini
+
+```java
+@Endpoint
+public class KelurahanEndpoint {
+    
+    @PayloadRoot(localPart = "daftarKelurahanRequest", namespace = "http://kemendag.go.id/webservices/siup")
+    @ResponsePayload
+    public DaftarKelurahanResponse cariKelurahan(@RequestPayload DaftarKelurahanRequest request){
+        DaftarKelurahanResponse resp = new DaftarKelurahanResponse();
+        
+        // query database dan isikan data kelurahan ke dalam resp
+
+        return resp;
+    }
+}
+```
+
+## Konversi XML ke Java ##
+
+Pada saat menerima data berupa XML, misalnya seperti ini:
+
+```xml
+<daftarKelurahanRequest>
+  <pencarian>
+    <nama>Cili</nama>
+  </pencarian>
+</daftarKelurahanRequest>
+```
+
+maka kita ingin mengubahnya menjadi objek Java, sehingga kita bisa proses seperti ini
+
+```java
+public DaftarKelurahanResponse cariKelurahan(@RequestPayload DaftarKelurahanRequest request){
+        String cariNamaKelurahan = request.getPencarian().getNama();
+        System.out.println("Mencari kelurahan dengan nama "+ cariNamaKelurahan);
+}
+```
+
+Untuk itu, kita buat Java class seperti ini
+
+```java
+public class DaftarKelurahanRequest {
+    private Pencarian pencarian;
+}
+```
+
+dan ini
+
+```java
+public class Pencarian {
+    private String nama;
+}
+```
+
+Demikian juga untuk responsenya. Kita perlu mengubah dari Java object menjadi XML.
+
+Agar konversi Java <--> XML bisa dilakukan secara otomatis (tidak perlu parsing XML secara manual), Java sudah menyediakan library yang bernama `JAXB`, singkatan dari Java API for XML Binding. Kita cukup memasang annotation di class yang akan menjadi `Root Element`, yaitu `DaftarKelurahanRequest` seperti ini
+
+```java
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(
+        name = "daftarKelurahanRequest", 
+        namespace = "http://kemendag.go.id/webservices/siup")
+public class DaftarKelurahanRequest {
+    private Pencarian pencarian;
+}
+```
+
+Dengan annotation `@XmlRootElement`, maka XML bisa dikonversi secara otomatis menjadi object `daftarKelurahanRequest` seperti dalam deklarasi method endpoint
+
+```java
+public DaftarKelurahanResponse cariKelurahan(@RequestPayload DaftarKelurahanRequest request)
+```
+
+Pada annotation `@XmlRootElement` di atas, kita mendeklarasikan juga `namespace` yang digunakan. Bila class kita banyak, tentu akan ada banyak duplikasi deklarasi `namespace`. Untuk menghindari hal tersebut, kita deklarasi sekali saja dalam file `package-info.java` seperti ini
+
+```java
+@XmlSchema( 
+    namespace = "http://kemendag.go.id/webservices/siup", 
+    elementFormDefault = XmlNsForm.QUALIFIED) 
+package id.go.kemendag.siup.aplikasisiup.dto;
+ 
+import javax.xml.bind.annotation.XmlNsForm;
+import javax.xml.bind.annotation.XmlSchema;
+```
+
+Simpan file `package-info.java` di package/folder yang sama dengan class-class yang beranotasi `@XmlRootElement` tadi.
+
+Annotation JAXB ini bisa kita buat sendiri secara manual, bisa juga secara otomatis dibuatkan berdasarkan XSD. Tidak ada bedanya antara yang dibuat manual ataupun hasil generate.
