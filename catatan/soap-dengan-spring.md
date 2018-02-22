@@ -2,14 +2,14 @@
 
 Langkah-langkah:
 
-1. Membuat contoh XML yang akan digunakan dalam aplikasi. Misal : data kelurahan
-2. Membuat XSD dari contoh XML. Bisa menggunakan layanan online seperti misalnya [Free Formatter](https://www.freeformatter.com/xsd-generator.html)
+1. [Membuat contoh XML yang akan digunakan dalam aplikasi. Misal : data kelurahan](#konsep-xml)
+2. [Membuat XSD dari contoh XML](#generate-xsd). Bisa menggunakan layanan online seperti misalnya [Free Formatter](https://www.freeformatter.com/xsd-generator.html)
 3. Membuat project Spring
-4. Menambahkan dependensi library untuk SOAP dengan Spring
-5. Memasang plugin untuk generate kode Java dari XSD
-6. Menambahkan XSD ke dalam project
-7. Membuat konfigurasi aplikasi web services
-8. Menjalankan aplikasi
+4. [Menambahkan dependensi library untuk SOAP dengan Spring](#dependensi-library-soap-dengan-spring)
+5. [Memasang plugin untuk generate kode Java dari XSD](#plugin-untuk-membuat-class-java-sesuai-xsd)
+6. [Menambahkan XSD ke dalam project](#memasang-file-xsd-ke-project)
+7. [Membuat konfigurasi aplikasi web services](#membuat-konfigurasi-spring-untuk-aplikasi-soap)
+8. [Menjalankan aplikasi](#menjalankan-aplikasi)
 
 ## Konsep XML ##
 
@@ -203,7 +203,9 @@ Tambahkan dependensi berikut di `pom.xml`
 </dependency>
 ```
 
-Kemudian, pasang plugin untuk membuat class Java sesuai XSD
+## Plugin untuk membuat class Java sesuai XSD ##
+
+Tambahkan plugin berikut di `pom.xml`
 
 ```xml
 <plugin>
