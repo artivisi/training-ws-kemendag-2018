@@ -1,0 +1,12 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:siup="http://kemendag.go.id/webservices/siup">
+    <soapenv:Header/>
+    <soapenv:Body>
+
+        <siup:daftarKelurahanRequest>
+            <siup:pencarian>
+                <siup:nama>Cili</siup:nama>
+            </siup:pencarian>
+        </siup:daftarKelurahanRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,21 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:daftarKelurahanResponse xmlns:ns2="http://kemendag.go.id/webservices/siup">
+            <ns2:daftarKelurahan>
+                <ns2:kelurahan>
+                    <ns2:id>1</ns2:id>
+                    <ns2:kode>K-001</ns2:kode>
+                    <ns2:nama>Cili</ns2:nama>
+                    <ns2:kodepos>12300</ns2:kodepos>
+                </ns2:kelurahan>
+                <ns2:kelurahan>
+                    <ns2:id>2</ns2:id>
+                    <ns2:kode>K-002</ns2:kode>
+                    <ns2:nama>Cili</ns2:nama>
+                    <ns2:kodepos>12302</ns2:kodepos>
+                </ns2:kelurahan>
+            </ns2:daftarKelurahan>
+        </ns2:daftarKelurahanResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
