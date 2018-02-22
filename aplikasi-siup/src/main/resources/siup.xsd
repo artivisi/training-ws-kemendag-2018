@@ -1,0 +1,50 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:tns="http://kemendag.go.id/webservices/siup"
+           targetNamespace="http://kemendag.go.id/webservices/siup" 
+           elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+    
+  <xs:element name="id" type="xs:integer"/>
+  <xs:element name="kode" type="xs:string"/>
+  <xs:element name="kodepos" type="xs:integer"/>
+  <xs:element name="nama" type="xs:string"/>
+  <xs:element name="pencarian">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:nama"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="daftarKelurahanRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:pencarian"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="kelurahan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:id"/>
+        <xs:element ref="tns:kode"/>
+        <xs:element ref="tns:nama"/>
+        <xs:element ref="tns:kodepos"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="daftarKelurahan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:kelurahan" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="daftarKelurahanResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:daftarKelurahan"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
