@@ -137,6 +137,89 @@ Fitur :
     * konversi id ke object. `http://localhost/user?id=1`
     * param untuk paging dan sorting. Param `page`, `rows`, `sort` otomatis dikenali
 
+## Implementasi Akses Database ##
+
+Langkah-langkah:
+
+1. Tambahkan library di `pom.xml`
+
+    * Database driver
+
+    ```xml
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    ```
+
+    * Migration
+
+    ```xml
+    <dependency>
+        <groupId>org.flywaydb</groupId>
+        <artifactId>flyway-core</artifactId>
+    </dependency>
+    ```
+
+    * Spring Data JPA
+
+    ```xml
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    ```
+
+2. Buat migration script di file `src/main/resources/db/migration/V1.0.0.2018022301__Skema_Kelurahan`
+
+    ```sql
+    create table kelurahan (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        kode VARCHAR(10) NOT NULL UNIQUE,
+        nama VARCHAR(255) NOT NULL, 
+        kodepos VARCHAR(10) NOT NULL
+    );
+    ```
+
+3. Buat konfigurasi koneksi database
+4. Buat user database dan databasenya
+5. Buat entity mapping class dengan tabel
+6. Buat DAO
+7. Gunakan di aplikasi web
+
+### Konfigurasi Koneksi Database ###
+
+Tambahkan baris berikut di `src/main/resources/application.properties`
+
+```
+spring.datasource.url=jdbc:mysql://localhost/siupdb
+spring.datasource.username=siupdbuser
+spring.datasource.password=siup123
+
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+```
+
+
+### Membuat user database ###
+
+1. Login ke mysql
+
+        mysql -u root
+        mysql>
+
+2. Buat user database
+
+        grant all on siupdb.* to siupdbuser@localhost identified by 'siup123';
+
+3. Buat database
+
+        create database siupdb;
+
+### Entity Class ###
+
+
+
 ## Referensi ##
 
 * [Java Transaction Design Strategies](https://www.infoq.com/minibooks/JTDS)
