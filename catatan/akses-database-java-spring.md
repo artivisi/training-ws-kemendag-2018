@@ -200,7 +200,6 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 ```
 
-
 ### Membuat user database ###
 
 1. Login ke mysql
@@ -218,7 +217,70 @@ spring.jpa.properties.hibernate.format_sql=true
 
 ### Entity Class ###
 
+Buat entity class yang berpadanan dengan skema database. Misalnya kita buat class `Kelurahan` dalam package `entity` seperti ini:
 
+```java
+@Data
+@Entity @Table(name = "kelurahan")
+public class Kelurahan {
+    
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    
+    @NotNull @NotEmpty
+    private String kode;
+    
+    @NotNull @NotEmpty
+    private String nama;
+    
+    @NotNull @NotEmpty
+    private String kodepos;
+}
+```
+
+Annotation `@Table` opsional, tidak perlu dipakai kalau nama class dan nama tabel mengikuti aturan penamaan standar. Bila kita menggunakan Spring Boot, aturannya sebagai berikut:
+
+* huruf depan dibuat jadi kecil. Misalnya nama class `Kelurahan` akan menjadi nama tabel `kelurahan`
+* CamelCase menjadi snake_case. Misalnya `KantorCabang` menjadi `kantor_cabang`
+* demikian juga nama variabel dan nama kolom. Variabel `String jenisKelamin` akan dimapping ke kolom `jenis_kelamin varchar(255)`
+
+### Data Access Object ###
+
+Spring Data JPA sudah membuatkan method-method yang sering dipakai, seperti misalnya:
+
+* findAll : akan menjalankan query `select * from nama_tabel`
+* findOne : `select * from nama_tabel where id = ?`
+* save : bila variabel `id` kosong, menjalankan `insert into nama_tabel`. Bila ada isinya, menjalankan `update nama_tabel set ... where id = ?`
+* dan seterusnya
+
+Kita hanya perlu membuat interface yang extends dari beberapa interface yang disediakan Spring, misalnya:
+
+* CrudRepository
+* PagingAndSortingRepository
+
+Berikut interface `KelurahanDao` yang ada dalam package `dao`
+
+```java
+public interface KelurahanDao extends PagingAndSortingRepository<Kelurahan, Integer>{
+    
+}
+```
+
+Selanjutnya, kita bisa gunakan dalam endpoint yang sudah dibuat sebelumnya:
+
+* Deklarasikan variabelnya dan berikan annotation `@Autowired` agar diisi oleh Spring
+
+    ```java
+    @Autowired private KelurahanDao kelurahanDao;
+    ```
+
+* Jalankan method `findAll` untuk mengambil data dari database
+
+   ```java
+   Iterable<Kelurahan> data = kelurahanDao.findAll();
+   ```
+
+[![Hasil Query](img/17-hasil-query.png)](img/17-hasil-query.png)
 
 ## Referensi ##
 
