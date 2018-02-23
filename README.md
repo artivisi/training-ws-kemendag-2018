@@ -12,3 +12,4 @@ Cara setup bisa dibaca [di artikel ini](https://software.endy.muhardin.com/java/
 
 * [Intro Web Service](catatan/konsep-webservice.md)
 * [Membuat Web Service SOAP dengan Spring](catatan/soap-dengan-spring.md)
+* [Akses Database dengan Java, Spring, Hibernate](catatan/akses-database-java.spring.md)
