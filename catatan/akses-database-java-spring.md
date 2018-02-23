@@ -280,6 +280,8 @@ Selanjutnya, kita bisa gunakan dalam endpoint yang sudah dibuat sebelumnya:
    Iterable<Kelurahan> data = kelurahanDao.findAll();
    ```
 
+Source code lengkapnya bisa dilihat [di sini](../aplikasi-siup/src/main/java/id/go/kemendag/siup/aplikasisiup/endpoint/KelurahanEndpoint.java)
+
 [![Hasil Query](img/17-hasil-query.png)](img/17-hasil-query.png)
 
 ## Referensi ##
