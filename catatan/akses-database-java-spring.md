@@ -116,9 +116,9 @@ Fitur Managed Transaction
     * NEVER : kalau sudah ada, error. Kalau belum ada, jalan tanpa transaction
 
 
-[![Transaction Propagation Required](img/15-transaction-propagation-required.png)](img/15-transaction-propagation-required.png)
+[![Transaction Propagation Required](img/15-transaction-propagation-required.jpg)](img/15-transaction-propagation-required.jpg)
 
-[![Transaction Propagation Requires New](img/16-transaction-propagation-requires_new.png)](img/16-transaction-propagation-requires_new.png)
+[![Transaction Propagation Requires New](img/16-transaction-propagation-requires_new.jpg)](img/16-transaction-propagation-requires_new.jpg)
 
 
 ## Spring Data JPA ##
