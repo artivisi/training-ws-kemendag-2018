@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,5 +61,13 @@ public class KelurahanApiController {
         BeanUtils.copyProperties(input, dariDatabase);
         dariDatabase.setId(id);
         kelurahanDao.save(dariDatabase);
+    }
+    
+    @DeleteMapping("/api/kelurahan/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void hapus(@PathVariable("id") Kelurahan k){
+        if(k != null){
+            kelurahanDao.delete(k);
+        }
     }
 }
