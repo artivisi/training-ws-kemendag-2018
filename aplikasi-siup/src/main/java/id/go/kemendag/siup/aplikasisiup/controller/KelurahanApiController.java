@@ -2,6 +2,7 @@ package id.go.kemendag.siup.aplikasisiup.controller;
 
 import id.go.kemendag.siup.aplikasisiup.dao.KelurahanDao;
 import id.go.kemendag.siup.aplikasisiup.entity.Kelurahan;
+import java.util.List;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,8 +31,8 @@ public class KelurahanApiController {
     
     @GetMapping("/api/kelurahan")
     @ResponseBody
-    public Page<Kelurahan> dataKelurahan(Pageable page){
-        return kelurahanDao.findAll(page);
+    public List<Kelurahan> dataKelurahan(Pageable page){
+        return kelurahanDao.findAll(page).getContent();
     }
     
     @GetMapping("/api/kelurahan/{id}")
