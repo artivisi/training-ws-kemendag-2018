@@ -28,7 +28,7 @@
                     <td>
                         <a th:href="@{view(id=${k.id})}">lihat</a> |
                         <a th:href="@{form(id=${k.id})}">edit</a> |
-                        <a href="#">hapus</a>
+                        <a th:href="@{hapus(id=${k.id})}">hapus</a>
                     </td>
                 </tr>
             </tbody>

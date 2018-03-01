@@ -34,4 +34,8 @@ public class SiupRestClient {
             restTemplate.put(restServer + pathKelurahan + "/" + k.getId(), k);
         }
     }
+
+    public void hapusKelurahan(Integer id) {
+        restTemplate.delete(restServer + pathKelurahan + "/" + id);
+    }
 }

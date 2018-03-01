@@ -66,4 +66,10 @@ public class KelurahanController {
         sessionStatus.setComplete();
         return "redirect:list";
     }
+    
+    @GetMapping("/kelurahan/hapus")
+    public String hapus(@RequestParam Integer id){
+        siupRestClient.hapusKelurahan(id);
+        return "redirect:list";
+    }
 }
