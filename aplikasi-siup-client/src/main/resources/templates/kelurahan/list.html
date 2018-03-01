@@ -19,13 +19,13 @@
             </thead>
             
             <tbody>
-                <tr>
-                    <td>T-001</td>
-                    <td>Test 001</td>
-                    <td>12345</td>
+                <tr th:each="k : ${daftarKelurahan}">
+                    <td th:text="${k.kode}">T-001</td>
+                    <td th:text="${k.nama}">Test 001</td>
+                    <td th:text="${k.kodepos}">12345</td>
                     <td>
-                        <a href="form">edit</a> |
-                        <a href="form">hapus</a>
+                        <a th:href="@{form(id=${k.id})}">edit</a> |
+                        <a href="#">hapus</a>
                     </td>
                 </tr>
             </tbody>

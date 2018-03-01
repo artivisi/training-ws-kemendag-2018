@@ -1,7 +1,9 @@
 package id.go.kemendag.siup.aplikasisiupclient.controller;
 
+import id.go.kemendag.siup.aplikasisiupclient.service.SiupRestClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +14,12 @@ public class KelurahanController {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(KelurahanController.class);
     
+    @Autowired private SiupRestClient siupRestClient;
+    
     @GetMapping("/kelurahan/list")
     public ModelMap daftarKelurahan(){
-        return new ModelMap();
+        return new ModelMap()
+                .addAttribute("daftarKelurahan", siupRestClient.dataKelurahan());
     }
     
     @GetMapping("/kelurahan/form")
