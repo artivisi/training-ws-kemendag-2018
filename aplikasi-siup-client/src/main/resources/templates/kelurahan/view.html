@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lihat Data Kelurahan</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <h1>Lihat Data Kelurahan</h1>
+        <form method="post">
+            <table>
+                <tr>
+                    <td>Kode</td>
+                    <td th:text="${kelurahan.kode}">
+                        K-001
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nama</td>
+                    <td th:text="${kelurahan.nama}">
+                        Kelurahan 001
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kode Pos</td>
+                    <td th:text="${kelurahan.kodepos}">
+                        12345
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

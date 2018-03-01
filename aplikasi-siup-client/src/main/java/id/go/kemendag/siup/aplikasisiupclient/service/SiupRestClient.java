@@ -14,10 +14,16 @@ public class SiupRestClient {
     @Value("${server.rest}")
     private String restServer;
     private RestTemplate restTemplate = new RestTemplate();
+    private String pathKelurahan = "/api/kelurahan";
     
     public List<Kelurahan> dataKelurahan(){
         ResponseEntity<Kelurahan[]> response = restTemplate.
-                getForEntity(restServer + "/api/kelurahan", Kelurahan[].class);
+                getForEntity(restServer + pathKelurahan, Kelurahan[].class);
         return Arrays.asList(response.getBody());
+    }
+
+    public Kelurahan cariById(Integer idKelurahan) {
+        return restTemplate.getForObject(restServer + pathKelurahan 
+                + "/"+idKelurahan, Kelurahan.class);
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class KelurahanController {
@@ -20,6 +21,12 @@ public class KelurahanController {
     public ModelMap daftarKelurahan(){
         return new ModelMap()
                 .addAttribute("daftarKelurahan", siupRestClient.dataKelurahan());
+    }
+    
+    @GetMapping("/kelurahan/view")
+    public ModelMap daftarKelurahan(@RequestParam(name = "id")Integer idKelurahan){
+        return new ModelMap()
+                .addAttribute("kelurahan", siupRestClient.cariById(idKelurahan));
     }
     
     @GetMapping("/kelurahan/form")

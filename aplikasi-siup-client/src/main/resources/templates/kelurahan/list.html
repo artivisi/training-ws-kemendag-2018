@@ -24,6 +24,7 @@
                     <td th:text="${k.nama}">Test 001</td>
                     <td th:text="${k.kodepos}">12345</td>
                     <td>
+                        <a th:href="@{view(id=${k.id})}">lihat</a> |
                         <a th:href="@{form(id=${k.id})}">edit</a> |
                         <a href="#">hapus</a>
                     </td>
