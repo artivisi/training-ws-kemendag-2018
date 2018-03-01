@@ -26,4 +26,12 @@ public class SiupRestClient {
         return restTemplate.getForObject(restServer + pathKelurahan 
                 + "/"+idKelurahan, Kelurahan.class);
     }
+
+    public void simpanKelurahan(Kelurahan k) {
+        if(k.getId() == null) {
+            restTemplate.postForLocation(restServer + pathKelurahan, k);
+        } else {
+            restTemplate.put(restServer + pathKelurahan + "/" + k.getId(), k);
+        }
+    }
 }

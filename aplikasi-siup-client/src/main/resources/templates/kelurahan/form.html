@@ -7,24 +7,37 @@
     </head>
     <body>
         <h1>Edit Kelurahan</h1>
-        <form method="post">
+        <form method="post" th:object="${kelurahan}" th:action="@{/kelurahan/form}">
+            <input type="hidden" th:field="*{id}"/>
             <table>
                 <tr>
                     <td>Kode</td>
                     <td>
-                        <input type="text" name="kode" />
+                        <input type="text" th:field="*{kode}"/>
+                    </td>
+                    <td>
+                        <p th:if="${#fields.hasErrors('kode')}" 
+                           th:errors="*{kode}">Incorrect date</p>
                     </td>
                 </tr>
                 <tr>
                     <td>Nama</td>
                     <td>
-                        <input type="text" name="nama" />
+                        <input type="text"  th:field="*{nama}"/>
+                    </td>
+                    <td>
+                        <p th:if="${#fields.hasErrors('nama')}" 
+                           th:errors="*{nama}">Incorrect date</p>
                     </td>
                 </tr>
                 <tr>
                     <td>Kode Pos</td>
                     <td>
-                        <input type="text" name="kodepos" />
+                        <input type="text" th:field="*{kodepos}"/>
+                    </td>
+                    <td>
+                        <p th:if="${#fields.hasErrors('kodepos')}" 
+                           th:errors="*{kodepos}">Incorrect date</p>
                     </td>
                 </tr>
                 <tr>
