@@ -1,0 +1,11 @@
+[Unit]
+Description=SIUP Web Service
+After=syslog.target
+
+[Service]
+User=root
+ExecStart=/var/lib/siup-server/siup-server.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
