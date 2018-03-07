@@ -75,6 +75,12 @@
             <version>2.8.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-mockmvc</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -85,6 +91,26 @@
                 <configuration>
                     <executable>true</executable>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-docs</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDocumentName>index.adoc</sourceDocumentName>
+                            <backend>html</backend>
+                            <attributes>
+                                <snippets>${project.build.directory}/snippets</snippets>
+                            </attributes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <!--
             <plugin>

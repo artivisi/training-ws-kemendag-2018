@@ -1,0 +1,17 @@
+= Dokumentasi API Aplikasi SIUP
+
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+Berikut adalah dokumentasi API untuk kelurahan yang bisa diakses di https://siup-server.herokuapp.com :
+
+.request
+include::{snippets}/kelurahan/http-request.adoc[]
+
+.response
+include::{snippets}/kelurahan/http-response.adoc[]
+

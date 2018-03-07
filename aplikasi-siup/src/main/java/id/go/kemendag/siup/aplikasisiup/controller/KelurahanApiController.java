@@ -2,14 +2,13 @@ package id.go.kemendag.siup.aplikasisiup.controller;
 
 import id.go.kemendag.siup.aplikasisiup.dao.KelurahanDao;
 import id.go.kemendag.siup.aplikasisiup.entity.Kelurahan;
+import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,8 +30,18 @@ public class KelurahanApiController {
     
     @GetMapping("/api/kelurahan")
     @ResponseBody
-    public List<Kelurahan> dataKelurahan(Pageable page){
-        return kelurahanDao.findAll(page).getContent();
+    public List<Kelurahan> dataKelurahan(){
+        System.out.println("Mencari data kelurahan");
+        List<Kelurahan> data = new ArrayList<>();
+        Kelurahan k = new Kelurahan();
+        k.setId(100);
+        k.setKode("K099");
+        k.setNama("Kelurahan 99");
+        k.setKodepos("123");
+        data.add(k);
+              
+        return data;
+        //return kelurahanDao.findAll(page).getContent();
     }
     
     @GetMapping("/api/kelurahan/{id}")
