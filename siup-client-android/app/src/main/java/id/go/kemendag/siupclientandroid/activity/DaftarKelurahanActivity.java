@@ -1,7 +1,10 @@
 package id.go.kemendag.siupclientandroid.activity;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -9,6 +12,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import id.go.kemendag.siupclientandroid.R;
+import id.go.kemendag.siupclientandroid.adapter.KelurahanAdapter;
 import id.go.kemendag.siupclientandroid.dto.Kelurahan;
 import id.go.kemendag.siupclientandroid.service.SiupRestClient;
 import retrofit2.Call;
@@ -20,6 +24,8 @@ public class DaftarKelurahanActivity extends AppCompatActivity {
     private static final String TAG = "DaftarKelurahanActivity";
 
     private SiupRestClient siupRestClient = new SiupRestClient();
+    private RecyclerView rvDaftarKelurahan;
+    private KelurahanAdapter kelurahanAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,13 @@ public class DaftarKelurahanActivity extends AppCompatActivity {
                     Log.i(TAG, "Nama : "+k.getNama());
                     Log.i(TAG, "Kodepos : "+k.getKodepos());
                 }
+
+                rvDaftarKelurahan = (RecyclerView) findViewById(R.id.rvDaftarKelurahan);
+                kelurahanAdapter = new KelurahanAdapter(hasil);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DaftarKelurahanActivity.this);
+                rvDaftarKelurahan.setLayoutManager(layoutManager);
+
+                rvDaftarKelurahan.setAdapter(kelurahanAdapter);
             }
 
             @Override

@@ -12,12 +12,20 @@
         android:layout_height="wrap_content"
         android:onClick="ambilData"
         android:text="Ambil Data"
-        tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="7dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp" />
 
-    <ListView
-        android:layout_width="344dp"
-        android:layout_height="440dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="63dp" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvDaftarKelurahan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
+
 </android.support.constraint.ConstraintLayout>
